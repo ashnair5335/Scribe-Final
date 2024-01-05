@@ -1,6 +1,5 @@
 from flask import Flask, render_template, jsonify, request
 import openai
-import GPT
 
 app = Flask(__name__)
 
