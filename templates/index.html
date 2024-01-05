@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI API Response</title>
+</head>
+<body>
+    <h1>OpenAI API Response</h1>
+
+    <form id="userInputForm">
+        <label for="userInput">Enter your question:</label>
+        <input type="text" id="userInput" name="userInput">
+        <button type="button" onclick="processInput()">Submit</button>
+    </form>
+
+    <p id="userQuestion">User's Question: Your question here</p>
+    <p id="apiResponse">API Response: Loading...</p>
+
+    <script>
+        function processInput() {
+            // Get user input from the form
+            var userInput = document.getElementById('userInput').value;
+
+            // Update the user question on the page
+            document.getElementById('userQuestion').textContent = 'User\'s Question: ' + userInput;
+
+            // Use Fetch API to send the user input to the server
+            fetch('/process_input', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'userInput=' + encodeURIComponent(userInput),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Update the content of the HTML element with the fetched data
+                document.getElementById('apiResponse').textContent = 'API Response: ' + data.response_text;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Scribe | AI For Education</title>-->
+<!--    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">-->
+<!--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1 class="title">Scribe: Gen AI for education</h1>-->
+<!--    <div id="chat-container" class="container">-->
+<!--        <div id="chat-box"></div>-->
+<!--        <textarea id="user-input" placeholder="Ask Scribe..." wrap="soft"></textarea>-->
+<!--        <button onclick="sendMessage()">Send</button>-->
+<!--    </div>-->
+
+<!--    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>-->
+<!--</body>-->
+<!--</html>-->
