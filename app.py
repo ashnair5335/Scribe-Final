@@ -18,13 +18,9 @@ def make_response(chat_input):
             }
         ],
     )
-    response = completion.choices[0].message.content
-    return response
+    return completion.choices[0].message.content
 
-
-# Initialize with a default response
 response_text = ""
-
 
 @app.route("/")
 def index():
@@ -35,11 +31,9 @@ def index():
 def process_input():
     user_input = request.form["userInput"]
 
-    # Use the user input to generate a response (replace this with your OpenAI API call)
-    # For demonstration purposes, let's just echo the user input.
-    response_text = make_response(user_input)
+    # return response based on user_input
 
-    return jsonify(response_text=response_text)
+    return jsonify(response_text=make_response(user_input))
 
 
 if __name__ == "__main__":
