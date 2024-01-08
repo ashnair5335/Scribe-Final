@@ -31,7 +31,7 @@ def process_input():
 
 @app.route('/get_response', methods=['GET'])
 def get_response():
-    return jsonify(response_text=GPT.response)
+    return jsonify(response_text=response_text)
 
 
 
