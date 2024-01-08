@@ -34,33 +34,5 @@ def get_response():
     return jsonify(response_text=response_text)
 
 
-
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-# from flask import Flask, render_template, request, jsonify
-# import openai
-# import GPT
-#
-# app = Flask(__name__)
-#
-# @app.route('/')
-# def index():
-#
-#     return render_template('index.html')
-#
-# # Route to handle chat interactions
-# @app.route('/chat', methods=['POST'])
-# def chat():
-#     user_input = request.form['user_input']
-#     # GPT API usage for response eventually
-#     response = GPT.response
-#     return jsonify({'usr_in': user_input}, {'response': response})
-#
-# @app.route('/get_response', methods=['GET'])
-# def get_response():
-#     return jsonify(response_text=GPT.response)
-#
-# if __name__ == '__main__':
-#     app.run(debug=True)
