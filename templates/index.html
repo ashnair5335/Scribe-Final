@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenAI API Response</title>
+    <title>Scribe | AI for Education</title>
 </head>
 <body>
-    <h1>OpenAI API Response</h1>
+    <h1>Scribe | AI for Education</h1>
 
     <form id="userInputForm">
         <label for="userInput">Enter your question:</label>
         <input type="text" id="userInput" name="userInput">
-        <button type="button" onclick="processInput()">Submit</button>
+        <button type="button" onclick="processInput()">Ask</button>
     </form>
 
-    <p id="userQuestion">User's Question: Your question here</p>
-    <p id="apiResponse">API Response: Loading...</p>
+    <p id="userQuestion">Question: </p>
+    <p id="apiResponse">Scribe: Loading...</p>
 
     <script>
         function processInput() {
