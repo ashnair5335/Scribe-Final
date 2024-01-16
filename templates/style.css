@@ -1,9 +1,14 @@
 /* Main page CSS */
 
 body {
-    font-family: 'Circular', sans-serif;
-    background-color: #599778;
-    margin: 0;
+    margin: 20px;
+    padding: 0;
+  }
+
+  #userInput {
+    margin: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Page container CSS */
@@ -35,7 +40,7 @@ body {
     width: calc(100% - 70px);
     padding: 8px;
     overflow: auto;
-    margin-right: 10px;
+    margin-right: 20px;
     background-color: #0f5733;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 1);
     color: #599778;
