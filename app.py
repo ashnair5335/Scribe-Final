@@ -29,7 +29,7 @@ def index():
 
 @app.route("/process_input", methods=["POST"])
 def process_input():
-    user_input = request.form["userInput"]
+    user_input = request.form["promptTextArea"]
 
     # return response based on user_input
 
