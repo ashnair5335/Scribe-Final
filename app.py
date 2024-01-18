@@ -3,6 +3,7 @@ import openai
 
 app = Flask(__name__)
 
+custom_instructions = "Answer all questions like a Pirate."
 
 def make_response(chat_input):
     openai.api_key = "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"
@@ -12,11 +13,9 @@ def make_response(chat_input):
     completion = openai.chat.completions.create(
         model="gpt-4-1106-preview",
         messages=[
-            {
-                "role": "user",
-                "content": chat_input,
-            }
-        ],
+            {"role": "system", "content": custom_instructions},
+            {"role": "user", "content": chat_input}
+        ]
     )
     return completion.choices[0].message.content
 
