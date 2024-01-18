@@ -3,7 +3,7 @@ import openai
 
 app = Flask(__name__)
 
-custom_instructions = "Answer all questions like a Pirate."
+custom_instructions = "Respond like a teacher. be helpful, but aid the user's learning."
 
 def make_response(chat_input):
     openai.api_key = "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"
