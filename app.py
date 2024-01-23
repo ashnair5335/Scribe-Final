@@ -1,12 +1,14 @@
 from flask import Flask, render_template, jsonify, request
 import openai
+# import markdown2
+# from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
-custom_instructions = "Respond like a teacher. be helpful, but aid the user's learning."
+custom_instructions = "Respond like a teacher. Be helpful, but aid the user's learning. You should facilitate the student's learning, but if asked for something like an example, respond with why you should not provide one. Aid the user through the process, but don't lead them directly to the answer."
 
 def make_response(chat_input):
-    openai.api_key = "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"
+    openai.api_key = "API_PLACEHOLDER_KEY"
 
     print(chat_input)
 
@@ -20,6 +22,10 @@ def make_response(chat_input):
     return completion.choices[0].message.content
 
 response_text = ""
+
+# final_text = BeautifulSoup(markdown2.markdown(response_text), 'html.parser')
+# for bold_tag in final_text.find_all('strong'):
+#     bold_tag['style'] = 'font-weight: bold;'
 
 @app.route("/")
 def index():
