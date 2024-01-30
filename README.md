@@ -1,4 +1,8 @@
-# **Scribe - an AI Tool for Education**
+# Scribe - an AI Tool for Education
+
+Scribe is a ChatGPT-powered solution to allow students to use AI to aid their learning process without impacting their learning experience, creativity or productivity negatively.
+
+## Setup Instructions
 
 To start, you need two modules: Flask and OpenAI.
 
