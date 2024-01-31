@@ -34,4 +34,12 @@ course_category = ("physics", "math", "history", "economics", "biology", "chemis
 
 Find the index of the topic you want to ask about and edit the index in ```course_category[2]``` to the new index.
 
+Also, find the following line:
+
+```python
+    openai.api_key = "PLACEHOLDER_API_KEY"
+```
+
+Replace ```PLACEHOLDER_API_KEY``` with your personal paid-for key.
+
 You should be all set to test Scribe!
