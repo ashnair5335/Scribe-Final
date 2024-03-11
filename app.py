@@ -16,7 +16,7 @@ course_specific_instructions = "Only respond to questions related to " + course_
                                "topics and tell them to focus on the current subject only."
 
 def make_response(chat_input):
-    openai.api_key = "PLACEHOLDER_API_KEY"
+    openai.api_key = "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"
 
     print(chat_input)
 
