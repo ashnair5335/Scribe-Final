@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scribe | Teacher Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Kode+Mono:wght@400..700&family=Nova+Round&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "VT323", sans-serif;
+            background-color: #242424;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #00fcbd;
+            text-shadow: 0 0 10px #00fcbd;
+        }
+
+        .login-container {
+            background-color: #333333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 50vh;
+            width: 50vh;
+            font-size: 40px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            font-family: "Kode Mono", monospace;
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            background-color: #242424;
+            color: #00fcbd;
+            height: 50px;
+            font-size: 30px;
+        }
+
+        button {
+            background-color: #00fcbd;
+            color: #333333;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: "VT323", monospace;
+            font-size: 50px;
+            font-weight: 1000;
+            box-shadow: 0 0 10px #00fcbd;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Teacher Login</h2>
+        <form action="#" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button onclick="redirectToTeacherHome()" type="submit">Login</button>
+            <button onclick="redirectToHome()" type="submit">Back</button>
+
+            <script>
+                function redirectToTeacherHome() {
+                    window.location.href = 'dashboard';
+                }
+                function redirectToHome() {
+                    window.location.href = 'home';
+                }
+            </script>
+        </form>
+    </div>
+</body>
+</html>

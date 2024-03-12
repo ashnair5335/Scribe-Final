@@ -33,9 +33,21 @@ def make_response(chat_input):
 
 response_text = ""
 
-@app.route("/")
+@app.route("/home")
 def index():
     return render_template("index.html", response_text=response_text)
+@app.route("/login")
+def student_login():
+    return render_template("studentlogin.html")
+@app.route("/login-teacher")
+def teacher_login():
+    return render_template("teacherlogin.html")
+@app.route("/chat")
+def chat():
+    return render_template("chat.html")
+@app.route("/dashboard")
+def teacher_home():
+    return render_template("teacherhome.html")
 
 
 @app.route("/process_input", methods=["POST"])

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scribe | Teacher Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #header {
+            font-size: 36px;
+            text-align: left;
+        }
+
+        #generateButton {
+            margin-top: 25vh;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        #outputContainer {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 20px;
+            width: 40%;
+            box-sizing: border-box;
+        }
+
+        #dropdown {
+            margin-top: 20px;
+            width: 40%;
+            position: relative;
+            display: inline-block;
+        }
+
+        #studentConversations {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        #studentConversations a {
+            padding: 12px 16px;
+            display: block;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">Welcome</div>
+    <button id="generateButton">Generate Class Key</button>
+
+    <div id="outputContainer">
+        <h2>Frequent Question Summary</h2>
+    </div>
+
+    <div id="dropdown">
+        <button onclick="toggleDropdown()">View student conversations</button>
+        <div id="studentConversations">
+            <a href="#" onclick="showConversation('John')">John</a>
+            <a href="#" onclick="showConversation('Jane')">Jane</a>
+            <a href="#" onclick="showConversation('Bob')">Bob</a>
+            <!-- Add more names as needed -->
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById("studentConversations");
+            if (dropdown.style.display === "block") {
+                dropdown.style.display = "none";
+            } else {
+                dropdown.style.display = "block";
+            }
+        }
+
+        function showConversation(studentName) {
+            var outputContainer = document.getElementById("outputContainer");
+            outputContainer.innerHTML = "<h2>Conversation with " + studentName + "</h2><p>Sample conversation here.</p>";
+        }
+    </script>
+</body>
+
+</html>
