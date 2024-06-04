@@ -45,7 +45,7 @@ def make_response(chat_input, previous_inputs):
 response_text = ""
 
 
-@app.route("/home")
+@app.route("/")
 def index():
     return render_template("index.html", response_text=response_text)
 @app.route("/login")
