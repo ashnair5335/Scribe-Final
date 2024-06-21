@@ -8,93 +8,191 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Kode+Mono:wght@400..700&family=Nova+Round&family=VT323&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #242424;
+            --text-color: #00fcbd;
+            --header-bg-color: #242424;
+            --header-dark-bg-color: #1a1a1a;
+            --button-bg-color: #333333;
+            --button-hover-bg-color: #256A59;
+            --button-dark-bg-color: #272727;
+            --button-hover-dark-bg-color: #1C6150;
+        }
+
+        ::-webkit-scrollbar {
+            width: 1vh;
+            background-color: #242424;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #00fcbd; /* Color of the scrollbar thumb */
+            border-radius: 2vh; /* Border radius of the scrollbar thumb */
+        }
+
         body {
             margin: 0;
             display: flex;
-            height: 100vh;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Kode Mono', sans-serif;
+            padding-top: 8vh; /* Height of header */
+            scroll-behavior: smooth;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2vh 2vh;
+            box-sizing: border-box;
+            background-color: var(--header-bg-color);
+            z-index: 1000;
+            transition: box-shadow 0.3s, background-color 0.3s;
+        }
+
+        header.shadow {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            background-color: var(--header-dark-bg-color);
         }
 
         h1 {
-            position: absolute;
-            font-family: 'VT323', sans-serif;
-            font-size: 5vh;
-            color: #00fcbd;
-            text-align: right;
+            padding-left: 2vw;
+            font-size: 2rem;
             text-shadow: 0 0 10px #006048;
-            transform: translateX(-50%);
-            left: 50vw;
         }
 
         .button-container {
-            flex: 1;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #242424; /* Change to your desired background color */
+            gap: 1vh;
         }
 
         .button {
-            position: relative;
-            padding: 20px;
+            font-family: VT323;
+            padding: 2vh;
             border: none;
-            border-radius: 10px;
-            background-color: #333333; /* Change to your desired button color */
-            color: #fff; /* Change to your desired text color */
+            border-radius: 1vh;
+            background-color: var(--button-bg-color);
             cursor: pointer;
-            overflow: hidden;
-            height: 90vh;
-            width: 90vh;
-            top: 5%;
-            bottom: 0%;
-            font-size: 50px;
-            font-family: "VT323", sans-serif;
-            color: #00fcbd;
-            text-shadow: 0 0 10px#00fcbd;
-            transition: background-color 0.3s, font-size 0.3s, box-shadow 0.3s;
+            height: 10vh;
+            width: 12vw;
+            font-size: 3vh;
+            color: var(--text-color);
+            text-shadow: 0 0 10px var(--text-color);
+            transition: all 0.3s;
         }
 
         .button:hover {
-          background-color: #242424;
-          font-size: 100px;
-          box-shadow: inset 0 0 10px #000;
+            background-color: var(--button-hover-bg-color);
+            box-shadow: 0 0 10px #000;
+            transform: translateY(-0.5vh);
         }
 
-        .button:hover::before {
-            transform: scale(1.5);
+        header.shadow .button {
+            background-color: var(--button-dark-bg-color);
         }
 
-        .button::before {
-            content: "→";
-            position: absolute;
-            top: 70%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            transition: transform 0.3s;
-            font-size: 24px;
+        header.shadow .button:hover {
+            background-color: var(--button-hover-dark-bg-color);
         }
 
-        .button.left::before {
-            content: "←";
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2vh 10vw;
+            font-size: 1.5rem;
+        }
+
+        .content p {
+            margin: 2vh 0;
+            text-align: left;
+        }
+
+        .content li {
+            text-align: left;
+            margin-bottom: 2vh;
+        }
+
+        .content h2 {
+            font-family: VT323;
+            margin: 2vh 0 1vh;
+            font-size: 2.5rem;
+            color: var(--text-color);
+        }
+
+        h3 {
+            font-family: VT323;
+            font-size: 3rem;
+            margin-bottom: 2vh;
+            color: var(--text-color);
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 1vh 0;
+            background-color: #1a1a1a;
+            color: var(--text-color);
+            font-size: 1rem;
         }
     </style>
 </head>
 <body>
-    <h1>Scribe | AI for Education</h1>
-    <div class="button-container">
-        <button class="button left" onclick="redirectToTeacherLogin()">For Teachers</button>
+    <header id="header">
+        <h1>Scribe | AI for Education</h1>
+        <div class="button-container">
+            <button class="button" onclick="redirectToTeacherLogin()">For Teachers</button>
+            <button class="button" onclick="redirectToStudentLogin()">For Students</button>
+        </div>
+    </header>
+
+    <div class="content">
+        <h3>Introducing the World's Best AI Tutor</h3>
+        <h2>The Future of Education</h2>
+        <p>Are you tired of traditional tutoring methods that don't seem to work for every student? It's time for a change. Scribe is an innovative AI tutor that's here to transform the way you teach and learn.</p>
+        
+        <h2>How Scribe Works</h2>
+        <p>Powered by ChatGPT and advanced APIs, Scribe personalizes the learning experience for high school students across a wide range of subjects, including history, math, physics, and more. With Scribe, students can actively engage with the material, leading to a deeper understanding and better retention.</p>
+        
+        <h2>Teachers Take the Wheel</h2>
+        <p>Scribe empowers educators by providing real-time insights into student learning. Teachers can filter topics to tailor Scribe to their curriculum and access summaries of student-Scribe conversations. This allows teachers to identify common misconceptions and adjust their teaching strategies accordingly, creating more effective lesson plans.</p>
+
+        <h2>The Scribe Advantage</h2>
+        <p>What sets Scribe apart from other AI tutors?</p>
+        <li>Interactive Approach: Scribe's interactive approach fosters deeper learning, leading to better retention and understanding of the material.</li>
+        <li>Valuable Data for Teachers: Scribe provides teachers with valuable data to optimize their classroom instruction and create more effective lesson plans.</li>
+        <li>Customizable to Your Curriculum: Scribe can be tailored to your curriculum, ensuring that students are learning the material that's most relevant to them.</li>
     </div>
-    <div class="button-container" onclick="redirectToStudentLogin()">
-        <button class="button">For Students</button>
-    </div>
+
+    <footer>
+        &copy; 2024 Scribe. All rights reserved.
+    </footer>
 
     <script>
-      function redirectToTeacherLogin() {
-        window.location.href = 'login-teacher';
-      }
+        function redirectToTeacherLogin() {
+            window.location.href = 'login-teacher';
+        }
 
-      function redirectToStudentLogin() {
-        window.location.href = 'login';
-      }
+        function redirectToStudentLogin() {
+            window.location.href = 'login';
+        }
+
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 0) {
+                header.classList.add('shadow');
+            } else {
+                header.classList.remove('shadow');
+            }
+        });
     </script>
 </body>
 </html>

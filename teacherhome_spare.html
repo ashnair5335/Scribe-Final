@@ -38,7 +38,6 @@
             color: #00fcbd;
             font-family: "Kode Mono", monospace;
             font-size: 25px;
-            height: 100%;
         }
 
         #studentList li {
@@ -61,7 +60,6 @@
             align-self: flex-end;
             cursor: pointer;
             background-color: #00fcbd;
-            opacity: 25%;
             color: #333333;
             position: absolute;
             top: calc(100vh - 90px);
@@ -69,12 +67,11 @@
             border-radius: 10px;
             font-size: 50px;
             box-shadow: 0 0 10px #000;
-            transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
         }
 
         #closeButton:hover {
-            background-color: #00fcbd;
-            opacity: 100%;
+            background-color: #008463;
         }
 
         #generateKeyButton {
@@ -101,7 +98,7 @@
 
         #summaryOutput {
             overflow: auto;
-            height: 100%;
+            height: 50%;
             padding: 10px;
             
         }
@@ -112,7 +109,7 @@
             flex-direction: column;
             font-family: "Kode Mono", monospace;
             color: #00fcbd;
-            text-align: left;
+            text-align: center;
             background-color: #333333;
             height: calc(100vh - 40px);
             margin: 20px;
@@ -138,9 +135,30 @@
     <div id="studentColumn">
         <ul id="studentList">
             <!-- Replace with actual student names -->
-            {% for user in all_users %}
-                <li onclick="showConversation({{ user.id }}, '{{ user.username }}')">{{ user.username }}</li>
-            {% endfor %}
+            <li onclick="showConversation('Student1')">Student1</li>
+            <li onclick="showConversation('Student2')">Student2</li>
+            <li onclick="showConversation('Student3')">Student3</li>
+            <li onclick="showConversation('Student4')">Student4</li>
+            <li onclick="showConversation('Student5')">Student5</li>
+            <li onclick="showConversation('Student6')">Student6</li>
+            <li onclick="showConversation('Student7')">Student7</li>
+            <li onclick="showConversation('Student8')">Student8</li>
+            <li onclick="showConversation('Student9')">Student9</li>
+            <li onclick="showConversation('Student10')">Student10</li>
+            <li onclick="showConversation('Student11')">Student11</li>
+            <li onclick="showConversation('Student12')">Student12</li>
+            <li onclick="showConversation('Student13')">Student13</li>
+            <li onclick="showConversation('Student14')">Student14</li>
+            <li onclick="showConversation('Student15')">Student15</li>
+            <li onclick="showConversation('Student16')">Student16</li>
+            <li onclick="showConversation('Student17')">Student17</li>
+            <li onclick="showConversation('Student18')">Student18</li>
+            <li onclick="showConversation('Student19')">Student19</li>
+            <li onclick="showConversation('Student20')">Student20</li>
+            <li onclick="showConversation('Student21')">Student21</li>
+            <li onclick="showConversation('Student22')">Student22</li>
+            <li onclick="showConversation('Student23')">Student23</li>
+            <!-- Add more student names as needed -->
         </ul>
     </div>
 
@@ -152,27 +170,12 @@
     <script>
         hideCloseButton();
         
-        function showConversation(userId, studentName) {
-            // Fetch and display conversations for the selected student
-            fetch('/fetch_conversation/' + userId)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('summaryOutput').innerHTML = `Conversations with ${studentName} <br>`;
-                    data.messages.forEach((message, index) => {
-                        var newMessage = document.createElement('p');
-                        if (index % 2 === 0) {
-                            newMessage.style.color = "#00fcbd";
-                            newMessage.textContent = "User's Question: " + message;
-                        } else {
-                            newMessage.style.color = "#ffffff";
-                            newMessage.textContent = "Scribe: " + message;
-                        }
-                        document.getElementById('summaryOutput').appendChild(newMessage);
-                    });
-                    selectedStudent = studentName;
-                    showCloseButton();
-                })
-                .catch(error => console.error('Error fetching conversation:', error));
+        function showConversation(studentName) {
+            // Replace this with logic to fetch and display conversations for the selected student
+            // For simplicity, let's just display the student's name for now
+            document.getElementById('summaryOutput').innerText = `Conversations with ${studentName}`;
+            selectedStudent = studentName;
+            showCloseButton();
         }
 
         function closeConversation() {

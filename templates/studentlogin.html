@@ -1,3 +1,4 @@
+<!-- studentlogin.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,22 +27,26 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            height: 50vh;
-            width: 50vh;
-            font-size: 40px;
+            width: 300px;
         }
-        
+
         button {
             background-color: #00fcbd;
             color: #333333;
             padding: 10px 15px;
             border: none;
-            border-radius: 10px;
+            border-radius: 5px;
             cursor: pointer;
             font-family: "VT323", monospace;
-            font-size: 50px;
-            font-weight: 1000;
+            font-size: 16px;
             box-shadow: 0 0 10px #00fcbd;
+            transition: all 0.25s;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #00bb8c;
         }
 
         label {
@@ -52,23 +57,44 @@
         input {
             font-family: "Kode Mono", monospace;
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             margin-bottom: 16px;
             box-sizing: border-box;
             background-color: #242424;
             color: #00fcbd;
-            height: 50px;
-            font-size: 30px;
-            border-radius: 10px;
+            border-radius: 5px;
         }
 
+        input:focus {
+            outline: none;
+        }
 
+        .alert {
+            padding: 10px;
+            margin-bottom: 16px;
+            border-radius: 5px;
+        }
+
+        .alert-info {
+            background-color: #003333;
+            border: 1px solid #00fcbd;
+        }
+
+        .alert-warning {
+            background-color: #333300;
+            border: 1px solid #fcbd00;
+        }
+
+        .alert-danger {
+            background-color: #330000;
+            border: 1px solid #fcbd00;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Student Login</h2>
-        
+
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
@@ -78,7 +104,7 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        
+
         <form action="/login" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
@@ -86,17 +112,9 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
 
-            <button onclick="redirectToChat()" type="submit">Login</button>
-            <button onclick="redirectToHome()" type="submit">Back</button>
-
-            <script>
-                function redirectToChat() {
-                    window.location.href = 'chat';
-                }
-                function redirectToHome() {
-                    window.location.href = '/';
-                }
-            </script>
+            <button type="submit">Login</button>
+            <button type="button" onclick="window.location.href = '/signup-student';">Sign Up</button>
+            <button type="button" onclick="window.location.href = '/';">Back</button>
         </form>
     </div>
 </body>

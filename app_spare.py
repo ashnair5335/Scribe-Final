@@ -19,11 +19,6 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(150), nullable=False)
     conversation = db.relationship('Conversation', back_populates='user', uselist=False)
 
-class Teacher(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(150), unique=True, nullable=False)
-    password = db.Column(db.String(150), nullable=False)
-
 class Conversation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -81,37 +76,9 @@ def signup():
             return redirect(url_for('student_login'))
     return render_template("studentsignup.html")
 
-@app.route("/login-teacher", methods=["GET", "POST"])
+@app.route("/login-teacher")
 def teacher_login():
-    if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
-        teacher = Teacher.query.filter_by(username=username).first()
-        if teacher and check_password_hash(teacher.password, password):
-            login_user(teacher)
-            print(f"[LOGIN] Teacher {username} (ID: {teacher.id}) logged in.")
-            return redirect(url_for('teacher_home'))
-        else:
-            flash("Login Unsuccessful. Please check username and password", "danger")
     return render_template("teacherlogin.html")
-
-@app.route("/signup-teacher", methods=["GET", "POST"])
-def signup_teacher():
-    if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
-        confirm_password = request.form["confirm_password"]
-
-        if password != confirm_password:
-            flash("Passwords do not match!", "danger")
-        else:
-            hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
-            new_teacher = Teacher(username=username, password=hashed_password)
-            db.session.add(new_teacher)
-            db.session.commit()
-            flash("Account created successfully!", "success")
-            return redirect(url_for('teacher_login'))
-    return render_template("teachersignup.html")
 
 @app.route("/chat")
 @login_required

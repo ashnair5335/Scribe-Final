@@ -1,9 +1,10 @@
+<!-- signup.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scribe | Teacher Login</title>
+    <title>Scribe | Student Sign Up</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Kode+Mono:wght@400..700&family=Nova+Round&family=VT323&display=swap" rel="stylesheet">
@@ -18,10 +19,10 @@
             justify-content: center;
             height: 100vh;
             color: #00fcbd;
-            text-shadow: 0 0 10px #00fcbd;
+            text-shadow: 0 0 5px #00fcbd;
         }
 
-        .login-container {
+        .signup-container {
             background-color: #333333;
             padding: 20px;
             border-radius: 10px;
@@ -64,10 +65,6 @@
             border-radius: 5px;
         }
 
-        input:focus {
-            outline: none;
-        }
-
         .alert {
             padding: 10px;
             margin-bottom: 16px;
@@ -91,8 +88,8 @@
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Teacher Login</h2>
+    <div class="signup-container">
+        <h2>Student Sign Up</h2>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -104,16 +101,18 @@
             {% endif %}
         {% endwith %}
 
-        <form action="/login-teacher" method="post">
+        <form action="/signup-student" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
 
-            <button type="submit">Login</button>
-            <button type="button" onclick="window.location.href = '/signup-teacher';">Sign Up</button>
-            <button type="button" onclick="window.location.href = '/';">Back</button>
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+
+            <button type="submit">Sign Up</button>
+            <button type="button" onclick="window.location.href = '/login';">Back</button>
         </form>
     </div>
 </body>
