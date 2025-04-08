@@ -1,10 +1,11 @@
 import openai 
-from flask import Flask, render_template, jsonify, request, flash, redirect, url_for, session
+from flask import Flask, render_template, jsonify, request, flash, redirect, url_for, send_file
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
 from datetime import datetime
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
@@ -37,7 +38,7 @@ def load_user(user_id):
 
 @app.route("/")
 def index():
-    return render_template("index.html", response_text=response_text)
+    return render_template("studentlogin.html", response_text=response_text)
 
 @app.route("/login", methods=["GET", "POST"])
 def student_login():
@@ -165,6 +166,14 @@ def logout():
             print(f"[CREATE] Created new conversation for user {current_user.id}.")
         db.session.commit()
         print(f"[SAVE] Conversation for user {current_user.id}: {response_var}")
+
+        log_path = os.path.join(os.path.dirname(__file__), 'conversation_log.txt')
+        with open(log_path, "w") as file:
+            # Write some text to the file
+            file.write(messages_text)
+
+        return send_file(log_path, as_attachment=True)
+        
     
     logout_user()
     response_var.clear()
