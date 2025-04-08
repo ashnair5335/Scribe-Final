@@ -1,3 +1,7 @@
+import subprocess
+
+subprocess.run(["pip", "install", "openai", "flask", "flask_sqlalchemy", "flask_login"])
+
 import openai 
 from flask import Flask, render_template, jsonify, request, flash, redirect, url_for, send_file
 from flask_sqlalchemy import SQLAlchemy
