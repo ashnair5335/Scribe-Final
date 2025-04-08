@@ -191,8 +191,9 @@ conversational_instructions = "The following is the previous parts of our conver
 
 response_var.clear()
 
+apikey = input("API Key: ")
 def make_response(chat_input, previous_inputs):
-    openai.api_key = "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"
+    openai.api_key = apikey
 
     print(chat_input)
 
