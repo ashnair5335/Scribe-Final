@@ -183,10 +183,11 @@ def logout():
     response_var.clear()
     return redirect(url_for('student_login'))
 
-main_instructions = "Your name is Scribe, a helpful teacher's assistant. You know that any information you provide has a chance of being wrong, so you ask the user to double-check with their teacher."
+main_instructions = "Your name is Scribe, a helpful teacher's assistant. You know that any information you provide has a chance of being wrong, so acknowledge the fact."
 course_category = ("physics", "math", "history", "economics", "biology", "chemistry", "general academics and admissions")
 custom_instructions = "Respond like a teacher. Be helpful, but aid the user's learning. You should facilitate the student's learning, but if asked for something like an example, respond with why you should not provide one. Aid the user through the process, but don't lead them directly to the answer. Only respond to questions that advance the user's knowledge academically."
-course_specific_instructions = "Only respond to questions related to " + course_category[0] + ". Provide no information about questions on any other topics and tell them to focus on the current subject only. Whenever you are posed with a question about another subject, respond with the following phrase ONLY (do not do anything else): I'm sorry, but I can't help with that question as it is not in the realm of this subject."
+course_specific_instructions = "Only respond to questions related to " + course_category[2] + ". Provide no information about questions on any other topics and tell them to focus on the current subject only. Whenever you are posed with a question about another subject, respond with the following phrase ONLY (do not do anything else): I'm sorry, but I can't help with that question as it is not in the realm of this subject."
+assignment_specific_instructions = "The following two questions are for the students to answer. NEVER ANSWER THEM DIRECTLY; THIS IS THEIR ASSIGNMENT. 'In the years leading to the Revolutionary War, the Declaration of Independence stated that “all men are created equal.” Did the early United States Government live up to that statement? Provide at least one specific example in each paragraph of your response.' and 'How did framers of the Constitution address their fears of monarchy and tyranny in the United States Constitution? Provide at least one specific example in each of your two paragraphs.'"
 conversational_instructions = "The following is the previous parts of our conversation. Use it to guide the rest of the conversation. For example, if I ask a question with no particular target, assume that I'm talking about the last topic."
 
 response_var.clear()
@@ -203,6 +204,7 @@ def make_response(chat_input, previous_inputs):
             {"role": "system", "content": main_instructions},
             {"role": "system", "content": custom_instructions},
             {"role": "system", "content": course_specific_instructions},
+            {"role": "system", "content": assignment_specific_instructions},
             {"role": "system", "content": conversational_instructions + str(previous_inputs)},
             {"role": "user", "content": chat_input}
         ]
